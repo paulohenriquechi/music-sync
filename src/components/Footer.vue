@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer small text-center text-white-50 fixed-bottom">
+    <footer class="footer small text-center text-white-50">
         <div class="container px-4 px-lg-5">
             Copyright &copy; MusicSync
         </div>

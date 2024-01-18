@@ -1,151 +1,105 @@
 <template>
   <section>
     <div class="container px-4">
-      <div class="row justify-content-center">
-        <div class="container mt-4">
-          <h2>Musicsync Lets You...</h2>
+        <SectionContainer title="Musicsync Lets You...">
           <div class="row">
-            <div class="col-4">
-              <div class="card text-bg-dark mb-3" style="max-width: 18rem">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h5 class="card-title">Dark card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="card text-bg-dark mb-3" style="max-width: 18rem">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h5 class="card-title">Dark card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="card text-bg-dark mb-3" style="max-width: 18rem">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h5 class="card-title">Dark card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <TextCard title="Track your music" subtitle="BLABLABLABLBABLABLABLBALBABLABLA"/>
+            <TextCard title="Track your music" subtitle="BLABLABLABLBABLABLABLBALBABLABLA"/>
+            <TextCard title="Track your music" subtitle="BLABLABLABLBABLABLABLBALBABLABLA"/>
+            <TextCard title="Track your music" subtitle="BLABLABLABLBABLABLABLBALBABLABLA"/>
+            <TextCard title="Track your music" subtitle="BLABLABLABLBABLABLABLBALBABLABLA"/>
+            <TextCard title="Track your music" subtitle="BLABLABLABLBABLABLABLBALBABLABLA"/>
           </div>
-          <div class="row"></div>
-        </div>
-        <div class="container mt-4">
-          <div class="row">
-            <h3>Top Artists</h3>
-            <div class="row p-2">
-              <div class="col">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                  class="img-thumbnail"
-                  alt="..."
-                />
-                <div class="row text-center">
-                  <span>Black Celebration</span>
-                  <span>Depeche Mode</span>
-                </div>
-              </div>
-              <div class="col">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                  class="img-thumbnail"
-                  alt="..."
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                  class="img-thumbnail"
-                  alt="..."
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                  class="img-thumbnail"
-                  alt="..."
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                  class="img-thumbnail"
-                  alt="..."
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                  class="img-thumbnail"
-                  alt="..."
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container mt-4">
-          <div class="row">
-            <h3>Latest Albums</h3>
-            <div class="col">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                class="img-thumbnail"
-                alt="..."
-              />
-            </div>
-            <div class="col">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                class="img-thumbnail"
-                alt="..."
-              />
-            </div>
-            <div class="col">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                class="img-thumbnail"
-                alt="..."
-              />
-            </div>
-            <div class="col">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                class="img-thumbnail"
-                alt="..."
-              />
-            </div>
-            <div class="col">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                class="img-thumbnail"
-                alt="..."
-              />
-            </div>
-            <div class="col">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Black_Celebration.jpg"
-                class="img-thumbnail"
-                alt="..."
-              />
-            </div>
-          </div>
-        </div>
+        </SectionContainer>
+        <SectionContainer title="Top Albums">
+          <ImageCard v-for="album in albums" :title="album.title" :subtitle="album.artist" :image="album.image" />
+        </SectionContainer>
+        <SectionContainer title="Top Artists">
+          <ImageCard v-for="artist in artists" :title="artist.name" :image="artist.image"/>
+        </SectionContainer>
       </div>
-    </div>
   </section>
 </template>
-<script setup lang="ts"></script>
+<script lang="ts">
+import ImageCard from "@/components/ImageCard.vue";
+import SectionContainer from "@/components/SectionContainer.vue";
+import TextCard from "@/components/TextCard.vue";
+export default {
+  name: "HomeView",
+  components: { ImageCard, SectionContainer, TextCard },
+  data() {
+    return {
+      albums: [
+        {
+          id: 1,
+          title: "Facelift",
+          artist: "Alice in Chains",
+          image: "facelift.jpg",
+        },
+        {
+          id: 2,
+          title: "Sap",
+          artist: "Alice in Chains",
+          image: "sap.jpg",
+        },
+        {
+          id: 3,
+          title: "Dirt",
+          artist: "Alice in Chains",
+          image: "dirt.jpg",
+        },
+        {
+          id: 4,
+          title: "Jar of flies",
+          artist: "Alice in Chains",
+          image: "jar-of-flies.jpg",
+        },
+        {
+          id: 5,
+          title: "Alice in chains",
+          artist: "Alice in Chains",
+          image: "tripod.jpg",
+        },
+        {
+          id: 6,
+          title: "MTV Unplugged",
+          artist: "Alice in Chains",
+          image: "mtv-unppluged.jpg",
+        },
+      ],
+      artists: [
+        {
+          id: 1,
+          name: "Bladee",
+          image: 'bladee.jpg'
+        },
+        {
+          id: 2,
+          name: "Bladee",
+          image: 'bladee.jpg'
+        },
+        {
+          id: 3,
+          name: "Bladee",
+          image: 'bladee.jpg'
+        },
+        {
+          id: 4,
+          name: "Bladee",
+          image: 'bladee.jpg'
+        },
+        {
+          id: 5,
+          name: "Bladee",
+          image: 'bladee.jpg'
+        },
+        {
+          id: 6,
+          name: "Bladee",
+          image: 'bladee.jpg'
+        },
+      ]
+    };
+  },
+};
+</script>
